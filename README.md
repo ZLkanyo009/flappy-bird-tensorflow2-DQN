@@ -10,6 +10,9 @@
 ## Training:  
 set ``istrain = True`` in deep_q_network.py and run with following command:  
 ```python deep_q_network.py```
-## Inference:  
+## Inference:  #
 set ``istrain = False`` in deep_q_network.py and run with following command:  
 ```python deep_q_network.py```
+
+# Visualization
+![flappy_bird](./assets/flappy_bird.png)

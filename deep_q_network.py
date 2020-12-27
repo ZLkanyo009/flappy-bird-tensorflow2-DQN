@@ -20,14 +20,13 @@ import wrapped_flappy_bird as game
 
 GAME = 'FlappyBird' # 游戏名称
 ACTIONS = 2 # 2个动作数量
-ACTIONS_NAME=['不动如山','拍拍翅膀']  #动作名
+ACTIONS_NAME=['不动','起飞']  #动作名
 GAMMA = 0.99 # 未来奖励的衰减
 OBSERVE = 10000. # 训练前观察积累的轮数
 EPSILON = 0.0001
 REPLAY_MEMORY = 50000 # 观测存储器D的容量
 BATCH = 32 # 训练batch大小
 old_time = 0
-update_time = 20
 
 class MyNet(Model):
     def __init__(self):
@@ -255,7 +254,7 @@ def trainNetwork(istrain):
         # write info to files
 
 def main():
-    trainNetwork(istrain = True)
+    trainNetwork(istrain = False)
 
 if __name__ == "__main__":
     main()

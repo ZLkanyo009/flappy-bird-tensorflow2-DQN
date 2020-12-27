@@ -72,7 +72,7 @@ class GameState:
             if self.playery > -2 * PLAYER_HEIGHT:
                 self.playerVelY = self.playerFlapAcc
                 self.playerFlapped = True
-                #SOUNDS['wing'].play()
+                SOUNDS['wing'].play() #disable it if you do not need sound
 
         # check for score
         playerMidPos = self.playerx + PLAYER_WIDTH / 2
@@ -80,7 +80,7 @@ class GameState:
             pipeMidPos = pipe['x'] + PIPE_WIDTH / 2
             if pipeMidPos <= playerMidPos < pipeMidPos + 4:
                 self.score += 1
-                #SOUNDS['point'].play()
+                SOUNDS['point'].play() #disable it if you do not need sound
                 reward = 1
 
         # playerIndex basex change
@@ -119,8 +119,8 @@ class GameState:
                              'index': self.playerIndex},
                             self.upperPipes, self.lowerPipes)
         if isCrash:
-            #SOUNDS['hit'].play()
-            #SOUNDS['die'].play()
+            SOUNDS['hit'].play() #disable it if you do not need sound
+            SOUNDS['die'].play() #disable it if you do not need sound
             terminal = True
             self.__init__()
             reward = -1
@@ -224,3 +224,12 @@ def pixelCollision(rect1, rect2, hitmask1, hitmask2):
             if hitmask1[x1+x][y1+y] and hitmask2[x2+x][y2+y]:
                 return True
     return False
+
+#use following code to run flappy bird without AI
+
+# game_state = GameState()
+# for i in range(0,20000):
+#     a_t_to_game = np.zeros(2)
+#     action_index = random.randrange(2)
+#     a_t_to_game[action_index] = 1
+#     game_state.frame_step(a_t_to_game)
